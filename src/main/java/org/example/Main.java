@@ -8,16 +8,33 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
+        System.out.println("----------------------------------------------");
         System.out.println("Üdvözöllek a Wumpus játékomban! ");
+        System.out.println("----------------------------------------------");
 
 
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        Scanner szov = new Scanner(System.in);
+
+
         System.out.println("Add meg a felasználóneved:");
 
-        String userName = myObj.nextLine();  // Read user input
-        System.out.println("A fehasználóneved: " + userName);  // Output user input
+        String jatekosNev = szov.nextLine();
+        System.out.println("A fehasználóneved: " + jatekosNev);
 
-        System.out.println("Kezdődjék a játék: ");
+        System.out.println("Szia "+jatekosNev+"! Kezdődjék a játék: ");
+        System.out.println("----------------------------------------------");
+        System.out.println("Menü: ");
+        System.out.println("(1) Új játék ");
+        System.out.println("(2) Pályaszerkesztő: ");
+        System.out.println("(3) Pálya betöltése külső állományból: ");
+        System.out.println("(4) Kiléps a menüből: ");
+
+
+        System.out.println("----------------------------------------------");
+
+        System.out.println("Mit választasz?");
+        String menuValasz = szov.nextLine();
+
 
         char[][] fixpalya = {
                 {'W','U','U','G','U'},
@@ -29,147 +46,250 @@ public class Main {
         };
 
 
-
-
-
-
-        for (int i = 0; i < fixpalya.length; ++i) {
+        for (int i = 0; i < fixpalya.length; ++i)
+        {
             for (int j = 0; j < fixpalya[i].length; ++j) {
                 System.out.print(fixpalya[i][j]);
             }
             System.out.println(' ');
         }
 
-        System.out.println("Add meg a lépésed (E1 H2 J3 B4  vagy nyomd meg a 0 gombot a játék befejezéséhez!)");
-        String valasz = myObj.nextLine();  // Read user input
-        System.out.println("A lépésed: " + valasz);  // Output user input
+        String valasz="Q";
+        String kilep="0";
+        int nyildb=2;
 
-        int e1,e2;
+        System.out.println("Add meg a lépésed (E(előre) H(hátra) J(jobbra) B(balra) L(lővés)  vagy nyomd meg a 0 gombot a játék befejezéséhez!)");
 
-        e1=0;e2=4;
-        int x=0;
-        int y=0;
-        for (int i = 0; i < fixpalya.length; ++i) {
-            for (int j = 0; j < fixpalya[i].length; ++j) {
-                if (fixpalya[i][j] == 'E') {
-                    System.out.print(i);
+        valasz = szov.nextLine();
+
+
+
+
+        while (!kilep.equals(valasz))
+            {
+
+                System.out.println("A lépésed: " + valasz);
+                System.out.println("A nyilak száma: " + nyildb);
+
+
+                int x = 0;
+                int y = 0;
+                System.out.print("Poziciód a pályán:");
+                for (int i = 0; i < fixpalya.length; ++i) {
+                    for (int j = 0; j < fixpalya[i].length; ++j) {
+                        if (fixpalya[i][j] == 'E') {
+                            System.out.print(i);
+                            System.out.print(" ");
+                            System.out.println(j);
+                            x = i;
+                            y = j;
+                        }
+                    }
+                }
+
+                if ("E".equals(valasz)) {
+                    if (fixpalya[x][y] == 'W') {
+                        System.out.println("Megölt a wumpus!");
+                    }
+                    if (fixpalya[x][y] == 'A') {
+                        System.out.println("Aranyat találtál!");
+                    }
+                    if (fixpalya[x][y] == 'U') {
+                        System.out.println("Üres mezőn vagy, nincs veszély!");
+                    }
+                    if (fixpalya[x][y] == 'G') {
+                        System.out.println("Gödörbe estél! Vége a játéknak!");
+                    }
+                    fixpalya[x][y] = 'U';
+                    y = y;
+                    x = x - 1;
+                    fixpalya[x][y] = 'E';
+                    System.out.print(fixpalya[x][y]);
+                    System.out.print(x);
                     System.out.print(" ");
-                    System.out.print(j);
-                    x=i;
-                    y=j;
+                    System.out.print(y);
+                    if (fixpalya[y][x - 1] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    if (fixpalya[y + 1][x] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    for (int i = 0; i < fixpalya.length; ++i) {
+                        for (int j = 0; j < fixpalya[i].length; ++j) {
+                            System.out.print(fixpalya[i][j]);
+                        }
+                        System.out.println(' ');
+                    }
+
+
                 }
-            }
-        }
+                if ("H".equals(valasz)) {
+                    if (fixpalya[x][y] == 'W') {
+                        System.out.println("Megölt a wumpus!");
+                    }
+                    if (fixpalya[x][y] == 'A') {
+                        System.out.println("Aranyat találtál!");
+                    }
+                    if (fixpalya[x][y] == 'U') {
+                        System.out.println("Üres mezőn vagy, nincs veszély!");
+                    }
+                    if (fixpalya[x][y] == 'G') {
+                        System.out.println("Gödörbe estél! Vége a játéknak!");
+                    }
+                    fixpalya[x][y] = 'U';
+                    y = y;
+                    x = x+1;
+                    fixpalya[x][y] = 'E';
+                    System.out.print(fixpalya[x][y]);
+                    System.out.print(x);
+                    System.out.print(" ");
+                    System.out.print(y);
+                    if (fixpalya[y][x - 1] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    if (fixpalya[y + 1][x] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    for (int i = 0; i < fixpalya.length; ++i) {
+                        for (int j = 0; j < fixpalya[i].length; ++j) {
+                            System.out.print(fixpalya[i][j]);
+                        }
+                        System.out.println(' ');
+                    }
 
-        if ("E".equals(valasz))
-        {
-            if (fixpalya[x][y]=='W')
-            {
-                System.out.println("Megölt a wumpus!");  // Output user input
-            }
-            if (fixpalya[x][y]=='A')
-            {
-                System.out.println("Aranyat találtál!");  // Output user input
-            }
-            if (fixpalya[x][y]=='U')
-            {
-                System.out.println("Üres mezőn vagy, nincs veszély!");  // Output user input
-            }
-            if (fixpalya[x][y]=='G')
-            {
-                System.out.println("Gödörbe estél! Vége a játéknak!");  // Output user input
-            }
-            fixpalya[x][y]='U';
-            y=y;
-            x=x-1;
-            fixpalya[x][y]='E';
-            System.out.print(fixpalya[x][y]);
-            System.out.print(x);
-            System.out.print(" ");
-            System.out.print(y);
-            if (fixpalya[y][x-1]=='U')
-            {
-                System.out.println("Közel a wumpus");
-                System.out.print(x);
-                System.out.print(" ");
-                System.out.println(y);
-            }
-            if (fixpalya[y+1][x]=='U')
-            {
-                System.out.println("Közel a wumpus");
-                System.out.print(x);
-                System.out.print(" ");
-                System.out.println(y);
-            }
-            for (int i = 0; i < fixpalya.length; ++i) {
-                for (int j = 0; j < fixpalya[i].length; ++j) {
-                    System.out.print(fixpalya[i][j]);
+
                 }
-                System.out.println(' ');
-            }
+                if ("J".equals(valasz)) {
+                    if (fixpalya[x][y] == 'W') {
+                        System.out.println("Megölt a wumpus!");
+                    }
+                    if (fixpalya[x][y] == 'A') {
+                        System.out.println("Aranyat találtál!");
+                    }
+                    if (fixpalya[x][y] == 'U') {
+                        System.out.println("Üres mezőn vagy, nincs veszély!");
+                    }
+                    if (fixpalya[x][y] == 'G') {
+                        System.out.println("Gödörbe estél! Vége a játéknak!");
+                    }
+                    fixpalya[x][y] = 'U';
+                    y = y+1;
+                    x = x;
+                    fixpalya[x][y] = 'E';
+                    System.out.print(fixpalya[x][y]);
+                    System.out.print(x);
+                    System.out.print(" ");
+                    System.out.print(y);
+                    if (fixpalya[y][x - 1] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    if (fixpalya[y + 1][x] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    for (int i = 0; i < fixpalya.length; ++i) {
+                        for (int j = 0; j < fixpalya[i].length; ++j) {
+                            System.out.print(fixpalya[i][j]);
+                        }
+                        System.out.println(' ');
+                    }
+
+
+                }
+                if ("B".equals(valasz)) {
+                    if (fixpalya[x][y] == 'W') {
+                        System.out.println("Megölt a wumpus!");
+                    }
+                    if (fixpalya[x][y] == 'A') {
+                        System.out.println("Aranyat találtál!");
+                    }
+                    if (fixpalya[x][y] == 'U') {
+                        System.out.println("Üres mezőn vagy, nincs veszély!");
+                    }
+                    if (fixpalya[x][y] == 'G') {
+                        System.out.println("Gödörbe estél! Vége a játéknak!");
+                    }
+                    fixpalya[x][y] = 'U';
+                    y = y-1;
+                    x = x;
+                    fixpalya[x][y] = 'E';
+                    System.out.print(fixpalya[x][y]);
+                    System.out.print(x);
+                    System.out.print(" ");
+                    System.out.print(y);
+                    if (fixpalya[y][x - 1] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    if (fixpalya[y + 1][x] == 'U') {
+                        System.out.println("Közel a wumpus");
+                        System.out.print(x);
+                        System.out.print(" ");
+                        System.out.println(y);
+                    }
+                    for (int i = 0; i < fixpalya.length; ++i) {
+                        for (int j = 0; j < fixpalya[i].length; ++j) {
+                            System.out.print(fixpalya[i][j]);
+                        }
+                        System.out.println(' ');
+                    }
+
+
+                }
+                if ("L".equals(valasz)) {
+                    if (nyildb>0) {
+                        nyildb--;
+                        System.out.println("Ilyadat megfeszíted és lősz!");
+                    }
+                    else
+                        System.out.println("Nincs több nyilad!");
+
+
+
+                    System.out.println("jelenlei nyilaid száma: "+nyildb);
+
+                    for (int i = 0; i < fixpalya.length; ++i) {
+                        for (int j = 0; j < fixpalya[i].length; ++j) {
+                            System.out.print(fixpalya[i][j]);
+                        }
+                        System.out.println(' ');
+                    }
+
+
+                }
+
+
+
+            System.out.println("Add meg a lépésed (E1 H2 J3 B4  vagy nyomd meg a 0 gombot a játék befejezéséhez!)");
+
+            valasz = szov.nextLine();
 
         }
-        System.out.println("Add meg a lépésed (E1 H2 J3 B4  vagy nyomd meg a 0 gombot a játék befejezéséhez!)");
-        valasz = myObj.nextLine();  // Read user input
-        System.out.println("A lépésed: " + valasz);  // Output user input
-        if ("E".equals(valasz))
-        {
-            if (fixpalya[x][y]=='W')
-            {
-                System.out.println("Megölt a wumpus!");  // Output user input
-            }
-            if (fixpalya[x][y]=='A')
-            {
-                System.out.println("Aranyat találtál!");  // Output user input
-            }
-            if (fixpalya[x][y]=='U')
-            {
-                System.out.println("Üres mezőn vagy, nincs veszély!");  // Output user input
-            }
-            if (fixpalya[x][y]=='G')
-            {
-                System.out.println("Gödörbe estél! Vége a játéknak!");  // Output user input
-            }
-            fixpalya[x][y]='U';
-            y=y;
-            x=x-1;
-            fixpalya[x][y]='E';
-            System.out.print(fixpalya[x][y]);
-            System.out.print(x);
-            System.out.print(" ");
-            System.out.print(y);
-            if (fixpalya[y][x-1]=='U')
-            {
-                System.out.println("Közel a wumpus");
-                System.out.print(x);
-                System.out.print(" ");
-                System.out.println(y);
-            }
-            if (fixpalya[y+1][x]=='U')
-            {
-                System.out.println("Közel a wumpus");
-                System.out.print(x);
-                System.out.print(" ");
-                System.out.println(y);
-            }
-
-
-        }
-
-
-        for (int i = 0; i < fixpalya.length; ++i) {
-            for (int j = 0; j < fixpalya[i].length; ++j) {
-                System.out.print(fixpalya[i][j]);
-            }
-            System.out.println(' ');
-        }
+        System.out.println("Kiléptél! Játszunk máskor is "+jatekosNev+ "!");
 
 
 
-        //While ( != "0")
-        //{
-            //System.out.println("Add meg a lépésed (E H J B  vagy nyomd meg a 0 gombot a játék befejezéséhez!)");
-        //};
+
+
 
         }
 }
