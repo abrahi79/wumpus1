@@ -33,6 +33,7 @@ public class Main {
         System.out.println("----------------------------------------------");
 
         System.out.println("Jelölések:");
+        System.out.print("E: A játékos, tehát Te!  ");
         System.out.print("F: Fal  ");
         System.out.print("U: Üres terület  ");
         System.out.print("W: Wumpus  ");
@@ -162,13 +163,13 @@ public class Main {
                     System.out.print(x);
                     System.out.print(" ");
                     System.out.print(y);
-                    if (fixpalya[y][x - 1] == 'U') {
+                    if (fixpalya[y][x - 1] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
                         System.out.print(" ");
                         System.out.println(y);
                     }
-                    if (fixpalya[y + 1][x] == 'U') {
+                    if (fixpalya[y + 1][x] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
                         System.out.print(" ");
@@ -203,14 +204,14 @@ public class Main {
                     System.out.print(fixpalya[x][y]);
                     System.out.print(x);
                     System.out.print(" ");
-                    System.out.print(y);
-                    if (fixpalya[y][x - 1] == 'U') {
+                    System.out.println(y);
+                    if (fixpalya[y][x - 1] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
                         System.out.print(" ");
                         System.out.println(y);
                     }
-                    if (fixpalya[y + 1][x] == 'U') {
+                    if (fixpalya[y + 1][x] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
                         System.out.print(" ");
@@ -245,14 +246,14 @@ public class Main {
                     System.out.print(fixpalya[x][y]);
                     System.out.print(x);
                     System.out.print(" ");
-                    System.out.print(y);
-                    if (fixpalya[y][x - 1] == 'U') {
+                    System.out.println(y);
+                    if (fixpalya[y][x - 1] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
                         System.out.print(" ");
                         System.out.println(y);
                     }
-                    if (fixpalya[y + 1][x] == 'U') {
+                    if (fixpalya[y + 1][x] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
                         System.out.print(" ");
