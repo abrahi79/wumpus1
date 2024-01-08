@@ -33,15 +33,15 @@ public class Main {
         System.out.println("----------------------------------------------");
 
         System.out.println("Jelölések:");
-        System.out.println("F: Fal");
-        System.out.println("U: Üres terület");
-        System.out.println("W: Wumpus");
-        System.out.println("A: Arany");
-        System.out.println("G: Gödör");
+        System.out.print("F: Fal  ");
+        System.out.print("U: Üres terület  ");
+        System.out.print("W: Wumpus  ");
+        System.out.print("A: Arany  ");
+        System.out.println("G: Gödör  ");
 
+        System.out.println("----------------------------------------------");
 
-
-        System.out.println("Mit választasz?");
+        System.out.println("Mit választasz a menüpontok közül?");
         String menuValasz = szov.nextLine();
 
 
@@ -119,7 +119,7 @@ public class Main {
                     System.out.print(fixpalya[x][y]);
                     System.out.print(x);
                     System.out.print(" ");
-                    System.out.print(y);
+                    System.out.println(y);
                     if (fixpalya[y][x - 1] == 'W') {
                         System.out.println("Közel a wumpus");
                         System.out.print(x);
@@ -176,7 +176,7 @@ public class Main {
                     }
                     for (int i = 0; i < fixpalya.length; ++i) {
                         for (int j = 0; j < fixpalya[i].length; ++j) {
-                            System.out.print(fixpalya[i][j]);
+                            System.out.print(fixpalya[i][j]+" | ");
                         }
                         System.out.println(' ');
                     }
@@ -218,7 +218,7 @@ public class Main {
                     }
                     for (int i = 0; i < fixpalya.length; ++i) {
                         for (int j = 0; j < fixpalya[i].length; ++j) {
-                            System.out.print(fixpalya[i][j]);
+                            System.out.print(fixpalya[i][j]+" | ");
                         }
                         System.out.println(' ');
                     }
@@ -260,7 +260,7 @@ public class Main {
                     }
                     for (int i = 0; i < fixpalya.length; ++i) {
                         for (int j = 0; j < fixpalya[i].length; ++j) {
-                            System.out.print(fixpalya[i][j]);
+                            System.out.print(fixpalya[i][j]+" | ");
                         }
                         System.out.println(' ');
                     }
@@ -281,7 +281,7 @@ public class Main {
 
                     for (int i = 0; i < fixpalya.length; ++i) {
                         for (int j = 0; j < fixpalya[i].length; ++j) {
-                            System.out.print(fixpalya[i][j]);
+                            System.out.print(fixpalya[i][j]+" | ");
                         }
                         System.out.println(' ');
                     }
