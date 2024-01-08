@@ -66,7 +66,7 @@ public class Main {
             System.out.println(' ');
 
         }
-
+        String nyilirany="0";
         String valasz="Q";
         String kilep="0";
         int nyildb=2;
@@ -269,9 +269,13 @@ public class Main {
 
                 }
                 if ("L".equals(valasz)) {
+                    System.out.println("Válassz nyilazási irányt! (L-E, L-J, L-B, L-H)");
+                    nyilirany = szov.nextLine();
+
                     if (nyildb>0) {
                         nyildb--;
                         System.out.println("Ilyadat megfeszíted és lősz!");
+
                     }
                     else
                         System.out.println("Nincs több nyilad!");
