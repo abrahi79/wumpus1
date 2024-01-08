@@ -103,6 +103,7 @@ public class Main {
                 if ("E".equals(valasz)) {
                     if (fixpalya[x-1][y] == 'W') {
                         System.out.println("Megölt a wumpus!");
+                        break;
                     }
                     if (fixpalya[x-1][y] == 'A') {
                         System.out.println("Aranyat találtál!");
@@ -112,6 +113,7 @@ public class Main {
                     }
                     if (fixpalya[x-1][y] == 'G') {
                         System.out.println("Gödörbe estél! Vége a játéknak!");
+                        break;
                     }
                     fixpalya[x][y] = 'U';
                     y = y;
@@ -157,6 +159,7 @@ public class Main {
                 if ("H".equals(valasz)) {
                     if (fixpalya[x+1][y] == 'W') {
                         System.out.println("Megölt a wumpus!");
+                        break;
                     }
                     if (fixpalya[x+1][y] == 'A') {
                         System.out.println("Aranyat találtál!");
@@ -166,6 +169,7 @@ public class Main {
                     }
                     if (fixpalya[x+1][y] == 'G') {
                         System.out.println("Gödörbe estél! Vége a játéknak!");
+                        break;
                     }
                     fixpalya[x][y] = 'U';
                     y = y;
@@ -199,6 +203,7 @@ public class Main {
                 if ("J".equals(valasz)) {
                     if (fixpalya[x][y+1] == 'W') {
                         System.out.println("Megölt a wumpus!");
+                        break;
                     }
                     if (fixpalya[x][y+1] == 'A') {
                         System.out.println("Aranyat találtál!");
@@ -208,6 +213,7 @@ public class Main {
                     }
                     if (fixpalya[x][y+1] == 'G') {
                         System.out.println("Gödörbe estél! Vége a játéknak!");
+                        break;
                     }
                     fixpalya[x][y] = 'U';
                     y = y+1;
@@ -241,6 +247,8 @@ public class Main {
                 if ("B".equals(valasz)) {
                     if (fixpalya[x][y-1] == 'W') {
                         System.out.println("Megölt a wumpus!");
+                        break;
+
                     }
                     if (fixpalya[x][y-1] == 'A') {
                         System.out.println("Aranyat találtál!");
@@ -250,6 +258,7 @@ public class Main {
                     }
                     if (fixpalya[x][y-1] == 'G') {
                         System.out.println("Gödörbe estél! Vége a játéknak!");
+                        break;
                     }
                     fixpalya[x][y] = 'U';
                     y = y-1;
@@ -313,7 +322,7 @@ public class Main {
             valasz = szov.nextLine();
 
         }
-        System.out.println("Kiléptél! Játszunk máskor is "+jatekosNev+ "!");
+        System.out.println("Kiléptél vagy megölt a wumpus vagy gödörbe estél! A játéknak vége!  Játszunk máskor is "+jatekosNev+ "!");
 
 
 
